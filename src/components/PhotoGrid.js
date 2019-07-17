@@ -25,7 +25,7 @@ export default function PhotoGrid(){
             const copyrightText = data.data.copyright;
             const mediaType = data.data.media_type;
             const url = data.data.url;
-            setPhoto(photoURL);
+            setPhoto(url);
             setDescription(descriptionText);
             setTitle(titleText);
             setCopyright(copyrightText);
@@ -41,7 +41,7 @@ export default function PhotoGrid(){
             <h1>{title}</h1>
             <VideoCard src={vidUrl}/>
             <DescriptionCard text={description}/>
-            <div>Choose Another Date: <input onChange={(value)=>{setDate(value.target.value)}} defaultValue="2019-07-17" type="date" id="dateInput" min="" max="2019-07-17"/></div>
+            <div>Choose Another Date: <input onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue="2019-07-17" type="date" id="dateInput" min="1995-06-16" max="2019-07-17"/></div>
         </div>
         )
     } else {
