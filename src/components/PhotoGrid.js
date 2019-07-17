@@ -44,7 +44,7 @@ export default function PhotoGrid(){
             <div>Choose Another Date: <input onChange={(value)=>{setDate(value.target.value)}} defaultValue="2019-07-17" type="date" id="dateInput" min="" max="2019-07-17"/></div>
         </div>
         )
-    }
+    } else {
 
     return (
         <div className='container'>
@@ -55,4 +55,4 @@ export default function PhotoGrid(){
             <div>Choose Another Date: <input onChange={(value)=>{setDate(value.target.value)}} defaultValue="2019-07-17" type="date" id="dateInput" min="" max="2019-07-17"/></div>
         </div>
     )
-}
+    }}
