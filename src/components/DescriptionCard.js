@@ -14,5 +14,6 @@ export default function DescriptionCard({text}){
 const dCardStyle = {
     border: '1px dashed teal',
     boxShadow: '5px 7px grey',
-    padding: '20px 30px'
+    padding: '20px 30px',
+    margin: '20px'
 }

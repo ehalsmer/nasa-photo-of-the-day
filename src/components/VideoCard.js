@@ -6,7 +6,7 @@ export default function PhotoCard(props){
     // console.log(props);
 
     return (
-        <div className="photo-card">
+        <div className="video-card">
             {/* <p>src:{props.src}</p> */}
             <object width="425" height="344" data={props.src}></object>
         </div>
