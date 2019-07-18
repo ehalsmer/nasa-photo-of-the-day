@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import PhotoCard from './PhotoCard';
 import VideoCard from './VideoCard';
 import { Container, Header, Input } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import TextContainer from './TextContainer';
+import DisplayImage from './ImgContainer';
 // import InputExampleInput./TextContainer
 
 
@@ -52,7 +52,8 @@ export default function PhotoGrid(){
     return (
         <div className='container'>
             <h1>{title}</h1>
-            <PhotoCard imgUrl={photo} copyright={copyright} media={media}/>
+            <DisplayImage imgUrl={photo} copyright={copyright}/>
+            {/* <PhotoCard imgUrl={photo} copyright={copyright} media={media}/> */}
             <TextContainer text={description}/>
             <Input type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue="2019-07-17" id="dateInput" min="1995-06-16" max="2019-07-17"/>
         </div>
