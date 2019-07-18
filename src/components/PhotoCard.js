@@ -9,12 +9,12 @@ export default function PhotoCard(props){
         <img style={{maxWidth:'1200px', maxHeight:'1000px'}} src={props.imgUrl}/>
     </div>
     )
-    console.log(props);
+    // console.log(props);
 
     return (
         
         <div className="photo-card">
-            <img style={{maxWidth:'1200px', maxHeight:'1000px'}} src={props.imgUrl}/>
+            <img style={{maxWidth:'100%', maxHeight:'1000px'}} src={props.imgUrl}/>
             <p style={copyrightStyle}>Copyright: {props.copyright}</p>
         </div>
     )

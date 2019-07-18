@@ -4,7 +4,7 @@ import React from 'react'
 import { Container, Header } from 'semantic-ui-react'
 
 const TextContainer = (props) => (
-  <Container text style={dCardStyle}>
+  <Container text textAlign='center' style={dCardStyle}>
     {/* <Header as='h2'>Header</Header> */}
     <p>
         {props.text}
@@ -13,9 +13,8 @@ const TextContainer = (props) => (
 )
 
 const dCardStyle = {
-    // border: '1px dashed teal',
     boxShadow: '7px 7px 15px 1px rgba(0,0,0,0.3)',
-    padding: '20px 30px',
+    padding: '40px 40px',
     margin: '30px'
 }
 

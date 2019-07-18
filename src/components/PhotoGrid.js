@@ -2,11 +2,10 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import PhotoCard from './PhotoCard';
 import VideoCard from './VideoCard';
-import DescriptionCard from './DescriptionCard';
-import Date from './Date';
-import { Container, Header } from "semantic-ui-react";
+import { Container, Header, Input } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import TextContainer from './ContainerExample';
+import TextContainer from './TextContainer';
+// import InputExampleInput./TextContainer
 
 
 export default function PhotoGrid(){
@@ -41,14 +40,12 @@ export default function PhotoGrid(){
     console.log(media);
     if (media === 'video'){
         return (
-            <div className='container'>
-            
-            <h1>{title}</h1>
-            <VideoCard src={vidUrl}/>
-            <TextContainer text={description}/>
-            {/* <DescriptionCard text={description}/> */}
-            <div>Choose Another Date: <input onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue="2019-07-17" type="date" id="dateInput" min="1995-06-16" max="2019-07-17"/></div>
-        </div>
+            <Container textAlign='center'>
+                <h1>{title}</h1>
+                <VideoCard src={vidUrl}/>
+                <TextContainer text={description}/>
+                <Input type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue="2019-07-17" id="dateInput" min="1995-06-16" max="2019-07-17"/>
+            </Container>
         )
     } else {
 
@@ -56,9 +53,8 @@ export default function PhotoGrid(){
         <div className='container'>
             <h1>{title}</h1>
             <PhotoCard imgUrl={photo} copyright={copyright} media={media}/>
-            <DescriptionCard text={description}/>
-            {/* <Date value={date}/> */}
-            <div>Choose Another Date: <input onChange={(value)=>{setDate(value.target.value)}} defaultValue="2019-07-17" type="date" id="dateInput" min="" max="2019-07-17"/></div>
+            <TextContainer text={description}/>
+            <Input type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue="2019-07-17" id="dateInput" min="1995-06-16" max="2019-07-17"/>
         </div>
     )
     }}
