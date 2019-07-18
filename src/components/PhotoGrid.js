@@ -4,6 +4,10 @@ import PhotoCard from './PhotoCard';
 import VideoCard from './VideoCard';
 import DescriptionCard from './DescriptionCard';
 import Date from './Date';
+import { Container, Header } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+import TextContainer from './ContainerExample';
+
 
 export default function PhotoGrid(){
     const [photo, setPhoto] = useState('');
@@ -38,9 +42,11 @@ export default function PhotoGrid(){
     if (media === 'video'){
         return (
             <div className='container'>
+            
             <h1>{title}</h1>
             <VideoCard src={vidUrl}/>
-            <DescriptionCard text={description}/>
+            <TextContainer text={description}/>
+            {/* <DescriptionCard text={description}/> */}
             <div>Choose Another Date: <input onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue="2019-07-17" type="date" id="dateInput" min="1995-06-16" max="2019-07-17"/></div>
         </div>
         )
