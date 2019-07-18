@@ -1,18 +1,18 @@
 import React from 'react';
-import {Image} from 'semantic-ui-react';
+import {Image, Container} from 'semantic-ui-react';
 
 const DisplayImage = (props) => {
     console.log(props);
     if (!props.copyright) return(
-        <div style={{maxWidth: '94%'}}>       
-            <Image src={props.imgUrl} size='auto' />
-        </div>
+        <Container style={{maxWidth: '94%'}}>       
+            <Image centered='true' src={props.imgUrl} size='auto' />
+        </Container>
         )
     return (
-        <div style={{maxWidth: '94%'}}>
-        <Image src={props.imgUrl} size='auto' />
-        <p style={copyrightStyle}>Copyright: {props.copyright}</p>
-        </div>
+        <Container style={{maxWidth: '94%'}}>
+            <Image centered='true' src={props.imgUrl} size='auto' style={{maxHeight: '700px'}}/>
+            <p style={copyrightStyle}>Copyright: {props.copyright}</p>
+        </Container>
     )
 }
 
