@@ -53,11 +53,13 @@ export default function PhotoGrid(){
     if (media === 'video'){
         return (
             <Container textAlign='center'>
-                <Header size='huge' as='h1'>{title}</Header>
+                <Header size='huge' style={{fontSize: '2.7rem'}} as='h1'>{title}</Header>
                 <Divider hidden />
                 <VideoCard src={vidUrl} title={title}/>
                 <TextContainer text={description}/>
-                <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max={formatted_today}/>
+                <Item style={{fontSize:'1.3rem'}}>Choose a Day:             
+                    <Input size='medium' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+                </Item>
                 <Divider hidden />
                 <Item compact size='mini' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>api.nasa.gov/index.html</a>.</Item>
             </Container>
@@ -66,11 +68,13 @@ export default function PhotoGrid(){
 
     return (        
          <Container textAlign='center'>
-            <Header size='huge' as='h1'>{title}</Header>
+            <Header size='huge' style={{fontSize: '2.7rem'}} as='h1'>{title}</Header>
             <Divider hidden />
             <DisplayImage imgUrl={photo} copyright={copyright} title={title}/>
             <TextContainer text={description}/>
-            <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+            <Item style={{fontSize:'1.3rem'}}>Choose a Day:             
+                <Input size='medium' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+            </Item>
             <Divider />
             <Item size='tiny' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>api.nasa.gov</a>.</Item>
         </Container>
