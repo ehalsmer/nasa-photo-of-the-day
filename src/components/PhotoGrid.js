@@ -57,13 +57,11 @@ export default function PhotoGrid(){
 
     return (
         <Container textAlign='center'>
-        <Rail internal position='left'>
-          <Segment compact style={segStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>https://api.nasa.gov/index.html</a></Segment>
-        </Rail>
             <Header as='h1'>{title}</Header>
             <DisplayImage imgUrl={photo} copyright={copyright}/>
             <TextContainer text={description}/>
             <Input type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+            <Item compact size='mini' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>https://api.nasa.gov/index.html</a>.</Item>
         </Container>
     )
     }}
