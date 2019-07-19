@@ -2,8 +2,6 @@ import React from 'react';
 import {Container} from 'semantic-ui-react';
 
 export default function Video(props){
-    // console.log(props);
-
     return (
         <Container>
             {/* <p>src:{props.src}</p> */}

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import VideoCard from './VideoCard';
-import { Container, Header, Input, Rail, Segment } from "semantic-ui-react";
+import { Container, Header, Input, Rail, Segment, Item, Divider, Grid } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import TextContainer from './TextContainer';
 import DisplayImage from './ImgContainer';
@@ -37,33 +37,39 @@ export default function PhotoGrid(){
         })
     }, [date])
     
-    const segStyle = {
-        //  width: 175, 
-        //  height: 175,
-         fontSize: '12px'
-        }
-
     console.log(media);
     if (media === 'video'){
         return (
             <Container textAlign='center'>
-                <Header as='h1'>{title}</Header>
+                <Header size='huge' as='h1'>{title}</Header>
+                <Divider hidden />
                 <VideoCard src={vidUrl}/>
                 <TextContainer text={description}/>
-                <Input type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+                <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+                <Divider hidden />
+                <Item compact size='mini' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>https://api.nasa.gov/index.html</a>.</Item>
             </Container>
         )
     } else {
 
-    return (
-        <Container textAlign='center'>
-        <Rail internal position='left'>
-          <Segment compact style={segStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>https://api.nasa.gov/index.html</a></Segment>
-        </Rail>
-            <Header as='h1'>{title}</Header>
-            <DisplayImage imgUrl={photo} copyright={copyright}/>
-            <TextContainer text={description}/>
-            <Input type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
-        </Container>
+    return (        
+         <Container textAlign='center'>
+    <Header size='huge' as='h1'>{title}</Header>
+    <Divider hidden />
+    <DisplayImage imgUrl={photo} copyright={copyright}/>
+    <TextContainer text={description}/>
+    <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+    <Divider />
+    <Item compact size='mini' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>https://api.nasa.gov/index.html</a>.</Item>
+
+</Container>
+
     )
     }}
+
+    const ItemStyle = {
+        //  width: 175, 
+        //  height: 175,
+         fontSize: '1rem',
+         padding: '30px'
+        }
