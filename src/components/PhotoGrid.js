@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import VideoCard from './VideoCard';
-import { Container, Header, Input, Rail, Segment, Item, Divider, Grid } from "semantic-ui-react";
+import { Container, Header, Input, Item, Divider } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import TextContainer from './TextContainer';
 import DisplayImage from './ImgContainer';
@@ -9,20 +9,29 @@ import DisplayImage from './ImgContainer';
 
 
 export default function PhotoGrid(){
+    const today = new Date();
+    function prependZero(n){
+        if(n <= 9){
+          return "0" + n;
+        }
+        return n
+      }
+    let formatted_today = today.getFullYear() + "-" + prependZero(today.getMonth() + 1) + "-" + prependZero(today.getDate());
+
     const [photo, setPhoto] = useState('');
     const [description, setDescription] = useState('');
     const [title, setTitle] = useState('');
     const [copyright, setCopyright] = useState('');
     const [media, setMedia] = useState('');
     const [vidUrl, setVidUrl] = useState('');
-    const [date, setDate] = useState('2019-07-18') // ToDo create today's date and start with that. Also set it as max on input form.
+    const [date, setDate] = useState(formatted_today) // ToDo create today's date and start with that. Also set it as max on input form.
 
     useEffect(()=>{
         axios
         .get(`https://api.nasa.gov/planetary/apod?api_key=sBsh1VAVYr7U7b0U8OW0CjDwbIgr47abietkqcwb&date=${date}`)
         .then(data => {
-            console.log(data.data)
-            const photoURL = data.data.hdurl;
+            // console.log(data.data)
+            // const photoURL = data.data.hdurl;
             const descriptionText = data.data.explanation;
             const titleText = data.data.title;
             const copyrightText = data.data.copyright;
@@ -37,35 +46,35 @@ export default function PhotoGrid(){
         })
     }, [date])
     
-    console.log(media);
+    // console.log(media);
+    if (!photo && !vidUrl){
+        return <div></div>
+    }
     if (media === 'video'){
         return (
             <Container textAlign='center'>
                 <Header size='huge' as='h1'>{title}</Header>
                 <Divider hidden />
-                <VideoCard src={vidUrl}/>
+                <VideoCard src={vidUrl} title={title}/>
                 <TextContainer text={description}/>
-                <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+                <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max={formatted_today}/>
                 <Divider hidden />
-                <Item compact size='mini' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>https://api.nasa.gov/index.html</a>.</Item>
+                <Item compact size='mini' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>api.nasa.gov/index.html</a>.</Item>
             </Container>
         )
     } else {
 
     return (        
          <Container textAlign='center'>
-    <Header size='huge' as='h1'>{title}</Header>
-    <Divider hidden />
-    <DisplayImage imgUrl={photo} copyright={copyright}/>
-    <TextContainer text={description}/>
-    <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
-    <Divider />
-    <Item compact size='mini' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>https://api.nasa.gov/index.html</a>.</Item>
-
-</Container>
-
-    )
-    }}
+            <Header size='huge' as='h1'>{title}</Header>
+            <Divider hidden />
+            <DisplayImage imgUrl={photo} copyright={copyright} title={title}/>
+            <TextContainer text={description}/>
+            <Input size='big' type="date" onChange={(newDate)=>{setDate(newDate.target.value)}} defaultValue={date} id="dateInput" min="1995-06-16" max="2019-07-18"/>
+            <Divider />
+            <Item size='tiny' style={ItemStyle} >This app was built with NASA's APOD API. For more information, visit <a href='https://api.nasa.gov/index.html'>api.nasa.gov</a>.</Item>
+        </Container>
+    )}}
 
     const ItemStyle = {
         //  width: 175, 

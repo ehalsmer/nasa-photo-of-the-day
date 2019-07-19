@@ -5,7 +5,7 @@ export default function Video(props){
     return (
         <Container>
             {/* <p>src:{props.src}</p> */}
-            <object width="425" height="344" data={props.src}></object>
+            <object width="425" height="344" data={props.src}>Video of {props.title}</object>
         </Container>
     )
 }

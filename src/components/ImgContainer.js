@@ -2,15 +2,17 @@ import React from 'react';
 import {Image, Container} from 'semantic-ui-react';
 
 const DisplayImage = (props) => {
-    console.log(props);
+    // console.log(props);
+    if (!props.imgUrl) return <h3>Loading...</h3>;
+    
     if (!props.copyright) return(
         <Container style={{maxWidth: '94%'}}>       
-            <Image centered='true' src={props.imgUrl} size='auto' />
+            <Image centered src={props.imgUrl} alt={props.title} size='massive' />
         </Container>
         )
     return (
         <Container style={{maxWidth: '94%'}}>
-            <Image centered='true' src={props.imgUrl} size='auto' style={{maxHeight: '700px'}}/>
+            <Image centered src={props.imgUrl} alt={props.title} size='massive' style={{maxHeight: '700px'}}/>
             <p style={copyrightStyle}>Copyright: {props.copyright}</p>
         </Container>
     )
